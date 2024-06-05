@@ -69,12 +69,12 @@ We welcome contributions to the URL Phishing Attack project. Please fork the rep
 ## Contact
 For any inquiries or further information, please contact:
 
-Madhiazagan N: email@example.com
+Madhiazagan N: madhiazagan1@gmail.com
 
-Gokulakrishnan B: email@example.com
+Gokulakrishnan B: krishnangokul2003@gmail.com
 
-Jesicka E: email@example.com
+Jesicka E: jesicka.e@gmail.com
 
-Kalaimamani: email@example.com
+Kalaimamani: kdkalai63@gmail.com
 
 Thank you for exploring the URL Phishing Attack project! We hope you find it informative and useful in enhancing your cybersecurity knowledge.
