@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;
+  background-image: url(https://images.unsplash.com/photo-1472905981516-5ac09f35b7f4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bG9nJTIwaW4lMjBwYWdlfGVufDB8fDB8fHww);
+  /* background-color: aqua; */
+  background-size: cover;
+  background-position:center center;
+  background-attachment: fixed;
+}
+form {
+  border: 3px solid #f1f1f1;
+  width:400px;
+  margin: 10px auto;
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0,0.7);
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+ background: url();
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  border-radius: 10px;
+ 
+}
+
+button:hover {
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0,0.7);
+ 
+
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+
+
+<form action="{{ url_for('login')}}" method="post">
+  <div class="imgcontainer">
+    <h2>Login Form</h2>
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+        
+    <button type="submit">Login</button>
+   
+  </div>
+
+ 
+</form>
+
+</body>
+</html>

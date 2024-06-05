@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <header
+        class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+      >
+        <a
+          href="/"
+          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+        >
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/017/098/784/original/phishing-attack-icon-suitable-for-a-wide-range-of-digital-creative-projects-free-vector.jpg"
+            width="50px"
+            height="50px"
+            class="rounded-circle mx-2"
+            alt=""
+          />
+          <span class="fs-4 text-primary">URL PHISHING ATTACK</span>
+        </a>
+
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" aria-current="page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('index2')}}" class="nav-link">Services</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('contact')}}" class="nav-link">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('about')}}" class="nav-link">About</a>
+          </li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container col-xxl-8 px-4 py-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img
+            src="https://gatefy.com/wp-content/uploads/2021/02/Phishing-attacks-use-links-of-up-to-1000-characters.jpg"
+            class="d-block mx-lg-auto img-fluid rounded shadow-lg"
+            alt="Bootstrap Themes"
+            width="700"
+            height="500"
+            loading="lazy"
+          />
+        </div>
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold text-primary lh-1 mb-3">
+            URL PHISHING ATTACK
+          </h1>
+          <p class="lead">
+            "Detect & Defend: ML-powered solution thwarting URL phishing
+            attacks. Real-time analysis, proactive protection, secure browsing
+            ensured. Stay ahead of cyber threats effortlessly.
+          </p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="{{ url_for('index2')}}"
+              ><button
+                type="button"
+                class="btn btn-primary btn-lg px-4 me-md-2"
+              >
+                Get Started !!!
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
