@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import os
 
-model1 = pickle.load(open(r'C:\Users\HP\Desktop\malicious\model\malicious.pickle','rb'))  
+model1 = pickle.load(open(r'model\malicious.pickle','rb'))  
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '1233444545555'  # Replace with a secure secret key
