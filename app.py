@@ -3,13 +3,16 @@ import numpy as np
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
 import os
 
-model1 = pickle.load(open(r'model\\malicious.pickle','rb'))  
+# Load the model
+model1 = pickle.load(open(r'model\\malicious.pickle', 'rb'))
 
+# Initialize the Flask application
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '1233444545555'  # Replace with a secure secret key
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  # SQLite database URI
+app.config['SECRET_KEY'] = os.urandom(24)  # Use a secure random key
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
 login_manager = LoginManager(app)
@@ -19,7 +22,7 @@ login_manager.login_view = 'login'
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
-    password = db.Column(db.String(50), nullable=False)
+    password = db.Column(db.String(200), nullable=False)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -32,6 +35,7 @@ with app.app_context():
 @app.route("/", methods=['GET'])
 def hello():
     return render_template('home.html')
+
 @app.route("/index", methods=['GET'])
 def index():
     return render_template('home2.html')
@@ -44,12 +48,9 @@ def index2():
 def about():
     return render_template('about.html')
 
-
 @app.route("/contact", methods=['GET'])
 def contact():
     return render_template('contact.html')
-
-
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
@@ -63,8 +64,9 @@ def signup():
             flash('Username already exists. Please choose another username.', 'error')
             return redirect(url_for('signup'))
 
-        # Create a new user
-        new_user = User(username=username, password=password)
+        # Create a new user with hashed password
+        hashed_password = generate_password_hash(password, method='sha256')
+        new_user = User(username=username, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
 
@@ -80,8 +82,8 @@ def login():
         password = request.form['password']
 
         # Check if the username and password are valid
-        user = User.query.filter_by(username=username, password=password).first()
-        if user:
+        user = User.query.filter_by(username=username).first()
+        if user and check_password_hash(user.password, password):
             login_user(user)
             flash('Login successful.', 'success')
             return redirect(url_for('index'))
@@ -97,23 +99,17 @@ def logout():
     flash('Logout successful.', 'success')
     return redirect(url_for('hello'))
 
-
-
 @app.route("/predict", methods=['POST'])
+@login_required  # Ensure the user is logged in to use the prediction endpoint
 def predict():
-    if request.method == 'POST': 
-
-
+    if request.method == 'POST':
         d1 = request.form['url']
         
-        arr = np.array([[ d1]])
-        print([d1])
+        # Assuming the model expects a numerical feature representation
+        arr = np.array([[d1]])  # Adjust as per your model's requirements
         pred1 = model1.predict(arr)[0]
 
-    return render_template('result.html',prediction_text1=pred1)
+    return render_template('result.html', prediction_text1=pred1)
 
-
-    
 if __name__ == '__main__':
     app.run(debug=True)
-    
